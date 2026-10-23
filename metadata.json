@@ -1,0 +1,6 @@
+{
+  "name": "LucknowSeva AI बिज़नेस सहायक",
+  "description": "लखनऊ सेवा (LucknowSeva) के लिए मोबाइल-फ्रेंडली हिंदी AI बिज़नेस असिस्टेंट, इलेक्ट्रीशियन और प्लंबर पंजीकरण, ग्राहक बुकिंग, वेबसाइट बिल्डर और ऑटोमेशन प्रबंधन।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
