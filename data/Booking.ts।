@@ -1,0 +1,37 @@
+import mongoose, { Schema, Document } from "mongoose";
+
+export interface IBooking extends Document {
+  customerName: string;
+  customerPhone: string;
+  requiredService: string;
+  providerId?: mongoose.Types.ObjectId | null;
+  date: Date;
+  status: "pending" | "assigned" | "completed" | "cancelled";
+  locality: string;
+  issueDescription?: string;
+}
+
+const BookingSchema = new Schema<IBooking>(
+  {
+    customerName: { type: String, required: true, trim: true },
+    customerPhone: { type: String, required: true, trim: true },
+    requiredService: { type: String, required: true },
+    providerId: {
+      type: Schema.Types.ObjectId,
+      ref: "Provider",
+      default: null,
+    },
+    date: { type: Date, default: Date.now },
+    status: {
+      type: String,
+      enum: ["pending", "assigned", "completed", "cancelled"],
+      default: "pending",
+    },
+    locality: { type: String, default: "Lucknow" },
+    issueDescription: { type: String, default: "" },
+  },
+  { timestamps: true, strict: false }
+);
+
+export default mongoose.models.Booking ||
+  mongoose.model<IBooking>("Booking", BookingSchema);
